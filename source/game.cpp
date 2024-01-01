@@ -46,6 +46,7 @@ void Game::draw()
     BeginDrawing();
     this->state->draw();
     if (this->show_fps) {
+        std::string fps_str {std::to_string(GetFPS())};
         DrawFPS(0, 0);
     }
     EndDrawing();

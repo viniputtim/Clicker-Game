@@ -20,6 +20,8 @@ class Sprite
         void load_texture();
         void scale(float scale);
         void draw();
+        bool collide_point(float x, float y);
+        bool collide_point(Vector2 pos);
         void set_x(float x);
         void set_y(float y);
         void set_left(float left);

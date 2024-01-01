@@ -39,6 +39,24 @@ void Sprite::draw()
 }
 
 
+bool Sprite::collide_point(float x, float y)
+{
+    bool collide_x {this->get_left() < x && this->get_right() > x};
+    bool collide_y {this->get_top() < y && this->get_bottom() > y};
+
+    return collide_x && collide_y;
+}
+
+
+bool Sprite::collide_point(Vector2 pos)
+{
+    bool collide_x {this->get_left() < pos.x && this->get_right() > pos.x};
+    bool collide_y {this->get_top() < pos.y && this->get_bottom() > pos.y};
+
+    return collide_x && collide_y;
+}
+
+
 void Sprite::set_x(float x)
 {
     this->x = x;
