@@ -15,6 +15,7 @@ class Game
         std::map<std::string, std::shared_ptr<State>> states {
             {"match", std::make_shared<Match> (this)}
         };
+        bool show_fps {true};
 
         void check_events();
         void update();

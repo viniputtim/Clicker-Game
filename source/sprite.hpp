@@ -1,24 +1,25 @@
 # ifndef SPRITE_HPP
 # define SPRITE_HPP
 
+# include <string>
 # include <raylib.h>
 
 
 class Sprite
 {
     private:
-        Texture 2D texture;
-        float width;
-        float height;
+        Image image;
+        Texture2D texture;
         float x {0};
         float y {0};
         float width {0};
         float height {0};
-    protected:
-
     public:
         Sprite(std::string file_path);
         ~Sprite();
+        void load_texture();
+        void scale(float scale);
+        void draw();
         void set_x(float x);
         void set_y(float y);
         void set_left(float left);
@@ -55,6 +56,8 @@ class Sprite
         Vector2 get_bottomleft();
         Vector2 get_midbottom();
         Vector2 get_bottomright();
+        float get_width();
+        float get_height();
 };
 
 

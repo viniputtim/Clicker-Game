@@ -5,15 +5,37 @@
 
 Sprite::Sprite(std::string file_path)
 {
-    this->texture = LoadTexture(file_path);
-    this->width = this->texture.width;
-    this->height = this->texture.height;
+    this->image = LoadImage(file_path.c_str());
+    this->load_texture();
 }
 
 
 Sprite::~Sprite()
 {
     
+}
+
+
+void Sprite::load_texture()
+{
+    this->texture = LoadTextureFromImage(this->image);
+    this->width = this->texture.width;
+    this->height = this->texture.height;
+}
+
+
+void Sprite::scale(float scale)
+{
+    float new_width {this->width * scale};
+    float new_height {this->height * scale};
+    ImageResize(&this->image, new_width, new_height);
+    this->load_texture();
+}
+
+
+void Sprite::draw()
+{
+    DrawTexture(this->texture, this->x, this->y, WHITE);
 }
 
 
@@ -188,7 +210,7 @@ Vector2 Sprite::get_pos()
     return {
         this->x,
         this->y
-    }
+    };
 }
 
 
@@ -197,7 +219,7 @@ Vector2 Sprite::get_topleft()
     return {
         this->get_left(),
         this->get_top()
-    }
+    };
 }
 
 
@@ -206,7 +228,7 @@ Vector2 Sprite::get_midtop()
     return {
         this->get_centerx(),
         this->get_top()
-    }
+    };
 }
 
 
@@ -215,7 +237,7 @@ Vector2 Sprite::get_topright()
     return {
         this->get_right(),
         this->get_top()
-    }
+    };
 }
 
 
@@ -224,7 +246,7 @@ Vector2 Sprite::get_midleft()
     return {
         this->get_left(),
         this->get_centery()
-    }
+    };
 }
 
 
@@ -233,7 +255,7 @@ Vector2 Sprite::get_center()
     return {
         this->get_centerx(),
         this->get_centery()
-    }
+    };
 }
 
 
@@ -242,7 +264,7 @@ Vector2 Sprite::get_midright()
     return {
         this->get_right(),
         this->get_centery()
-    }
+    };
 }
 
 
@@ -251,7 +273,7 @@ Vector2 Sprite::get_bottomleft()
     return {
         this->get_left(),
         this->get_bottom()
-    }
+    };
 }
 
 
@@ -259,8 +281,8 @@ Vector2 Sprite::get_midbottom()
 {
     return {
         this->get_centerx(),
-        this->bottom()
-    }
+        this->get_bottom()
+    };
 }
 
 
@@ -269,5 +291,17 @@ Vector2 Sprite::get_bottomright()
     return {
         this->get_right(),
         this->get_bottom()
-    }
+    };
+}
+
+
+float Sprite::get_width()
+{
+    return this->width;
+}
+
+
+float Sprite::get_height()
+{
+    return this->height;
 }

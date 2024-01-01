@@ -17,7 +17,7 @@ Game::~Game()
 
 void Game::run()
 {
-    while(!WindowShouldClose()) {
+    while (!WindowShouldClose()) {
         this->check_events();
         this->update();
         this->draw();
@@ -27,6 +27,10 @@ void Game::run()
 
 void Game::check_events()
 {
+    if (IsKeyPressed(KEY_TAB)) {
+        this->show_fps = !this->show_fps;
+    }
+
     this->state->check_events();
 }
 
@@ -41,7 +45,9 @@ void Game::draw()
 {
     BeginDrawing();
     this->state->draw();
-    DrawFPS(0, 0);
+    if (this->show_fps) {
+        DrawFPS(0, 0);
+    }
     EndDrawing();
 }
 
