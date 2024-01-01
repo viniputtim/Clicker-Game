@@ -31,5 +31,5 @@ void Match::update()
 
 void Match::draw()
 {
-    ClearBackground(YELLOW);
+    ClearBackground(RAYWHITE);
 }
