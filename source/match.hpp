@@ -13,6 +13,7 @@ class Game;
 class Match : public State
 {
     private:
+        int value_font_size {14};
         int score {0};
         int score_font_size {40};
         int score_x {0};
@@ -24,7 +25,7 @@ class Match : public State
         Sprite mouse_power {"../resources/graphics/mouse_power.png"};
         int mouse_power_value {250};
         int chantilly_value {50};
-        int auto_clicker_value {1000};
+        int auto_clicker_value {1000000};
         int click_value {1};
         int chantily_passive {0};
         double chantilly_time {0};

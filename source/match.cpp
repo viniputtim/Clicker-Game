@@ -15,9 +15,9 @@ Match::Match(Game *game) : State(game)
     this->mouse_power.scale(0.15);
     this->chantilly.scale(0.15);
     this->auto_clicker.scale(0.15);
-    this->mouse_power.set_bottom(GetScreenHeight());
-    this->chantilly.set_bottomleft(this->mouse_power.get_right() + 1, this->mouse_power.get_bottom());
-    this->auto_clicker.set_bottomleft(this->chantilly.get_right() + 1, this->chantilly.get_bottom());
+    this->chantilly.set_bottom(GetScreenHeight());
+    this->mouse_power.set_bottomleft(this->chantilly.get_right() + 1, this->chantilly.get_bottom());
+    this->auto_clicker.set_bottomleft(this->mouse_power.get_right() + 1, this->mouse_power.get_bottom());
 }
 
 
@@ -83,11 +83,11 @@ void Match::draw()
     this->auto_clicker.draw();
 
     std::string mouse_power_value_str {"$ " + std::to_string(this->mouse_power_value)};
-    DrawTextEx(GetFontDefault(), mouse_power_value_str.c_str(), this->mouse_power.get_pos(), 16, 2, DARKGREEN);
+    DrawTextEx(GetFontDefault(), mouse_power_value_str.c_str(), this->mouse_power.get_pos(), this->value_font_size, 2, DARKGREEN);
     std::string chantilly_value_str {"$ " + std::to_string(this->chantilly_value)};
-    DrawTextEx(GetFontDefault(), chantilly_value_str.c_str(), this->chantilly.get_pos(), 16, 2, DARKGREEN);
+    DrawTextEx(GetFontDefault(), chantilly_value_str.c_str(), this->chantilly.get_pos(), this->value_font_size, 2, DARKGREEN);
     std::string auto_clicker_value_str {"$ " + std::to_string(this->auto_clicker_value)};
-    DrawTextEx(GetFontDefault(), auto_clicker_value_str.c_str(), this->auto_clicker.get_pos(), 16, 2, DARKGREEN);
+    DrawTextEx(GetFontDefault(), auto_clicker_value_str.c_str(), this->auto_clicker.get_pos(), this->value_font_size, 2, DARKGREEN);
 
     std::string score_str {std::to_string(this->score)};
     this->score_x = (GetScreenWidth() - MeasureText(score_str.c_str(), score_font_size)) / 2;
