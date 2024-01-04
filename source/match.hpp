@@ -14,7 +14,7 @@ class Match : public State
 {
     private:
         int value_font_size {14};
-        int score {0};
+        long long int score {0};
         int score_font_size {40};
         int score_x {0};
         float score_y {0};
